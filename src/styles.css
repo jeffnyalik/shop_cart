@@ -1,1 +1,82 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
+*{
+    box-sizing: border-box;
+}
+
+header{
+    background: rgba(94, 0, 0);
+    padding: 10px;
+}
+.cart_icon{
+    position: relative;
+}
+.cart_icon fa-icon{
+    font-size: 20px;
+    color: #ffff;
+}
+fa-icon{
+    cursor: pointer;
+}
+.cart_value{
+    position: absolute;
+    top: -16px;
+    right: -25px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #ffff;
+    border: 1px solid #ccc;
+    padding: 4px 10px;
+    border-radius: 50%;
+}
+.product{
+    padding: 40px 0;
+}
+.box{
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.content h4{
+    margin-top: 10px;
+}
+.content span{
+    font-weight: 800;
+    font-size: 18px;
+}
+.btn_add{
+    background-color: rgba(94, 0, 0);
+    border-radius: 50%;
+    font-size: 16px;
+    margin: 0 8px;
+    color: #ffff;
+}
+
+.btn_min{
+    background-color: rgba(94, 0, 0);
+    border-radius: 50%;
+    font-size: 16px;
+    margin: 0 8px;
+    color: #ffff;
+}
+.cart_btn{
+    border-radius: 4px;
+    color: #ffff;
+    background: rgba(94, 0, 0);
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 3px;
+}
+
+.total_section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.total_area{
+    font-weight: 800;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
