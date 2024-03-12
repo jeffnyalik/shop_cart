@@ -1,14 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   imports: [
     FontAwesomeModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
@@ -19,8 +22,9 @@ export class CartComponent {
   isLocastorageAvailable = typeof localStorage !== 'undefined';
   getCartDetails:any = [];
   totalNumber:number = 0;
+  public cartItem:number = 0;
 
-  constructor(){}
+  constructor(private cartService: CartService){}
   ngOnInit(): void {
     this.cartDetails();
     this.loadCart();
@@ -78,6 +82,45 @@ export class CartComponent {
           return acc + (itemAmt * itemQnt)
         }, 0)
         console.log(this.totalNumber);
+      }
+    }
+  }
+
+  removeAll(){
+    if(this.isLocastorageAvailable){
+      if(localStorage.getItem('localCart')){
+        localStorage.removeItem('localCart');
+        localStorage.clear();
+        this.getCartDetails = [];
+        this.totalNumber = 0;
+        this.cartService.cartSubject.next(this.cartItem)
+        console.log('Cart has been cleared');
+      }
+    }
+  }
+
+  singleDelete(item:any){
+    if(this.isLocastorageAvailable){
+      if(localStorage.getItem('localCart')){
+        this.getCartDetails = JSON.parse(localStorage.getItem('localCart') || '[]');
+        for(let i = 0; i < this.getCartDetails.length; i++){
+          if(this.getCartDetails[i].id === item){
+            this.getCartDetails.splice(i, 1);
+            localStorage.setItem('localCart', JSON.stringify(this.getCartDetails));
+            this.loadCart();
+            this.cartFunction();
+          }
+        }
+      }
+    }
+  }
+
+  cartFunction(){
+    if(this.isLocastorageAvailable){
+      if(localStorage.getItem('localCart') !=null){
+        let countCart = JSON.parse(localStorage.getItem('localCart') || '[]');
+        this.cartItem = countCart.length;
+        this.cartService.cartSubject.next(this.cartItem);
       }
     }
   }
