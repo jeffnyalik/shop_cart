@@ -25,7 +25,7 @@
                     </div>
                 </td>
                 <td>
-                    $ {{item.price}}
+                    $ {{item.price * item.qnt}}
                 </td>
                 <td>
                     <fa-icon [icon]="faTrashAlt" style="color:red;"></fa-icon>
@@ -35,7 +35,7 @@
           </table>
 
           <div class="total_section">
-            <span class="total_area">Total $ 400</span>
+            <span class="total_area">Total:  {{ totalNumber | currency:'ksh' }}</span>
             
             <button class="btn btn-danger rounded-0">
                 <fa-icon [icon]="faTrashAlt"></fa-icon> Remove all items

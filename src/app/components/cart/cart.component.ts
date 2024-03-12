@@ -18,10 +18,12 @@ export class CartComponent {
   faTrashAlt = faTrashAlt;
   isLocastorageAvailable = typeof localStorage !== 'undefined';
   getCartDetails:any = [];
+  totalNumber:number = 0;
 
   constructor(){}
   ngOnInit(): void {
     this.cartDetails();
+    this.loadCart();
   }
 
   cartDetails(){
@@ -45,7 +47,8 @@ export class CartComponent {
       }
     }
 
-    localStorage.setItem('localCart', JSON.stringify(this.getCartDetails))
+    localStorage.setItem('localCart', JSON.stringify(this.getCartDetails));
+    this.loadCart();
   }
 
   decQty(id:any, qnt:any){
@@ -61,5 +64,21 @@ export class CartComponent {
     }
 
     localStorage.setItem('localCart', JSON.stringify(this.getCartDetails))
+    this.loadCart();
+  }
+
+  loadCart(){
+    if(this.isLocastorageAvailable){
+      if(localStorage.getItem('localCart')){
+        this.getCartDetails = JSON.parse(localStorage.getItem('localCart') || '[]');
+        this.totalNumber = this.getCartDetails.reduce(function(acc:any, val:any){
+          const itemAmt = parseFloat(val.price);
+          const itemQnt = parseFloat(val.qnt);
+          
+          return acc + (itemAmt * itemQnt)
+        }, 0)
+        console.log(this.totalNumber);
+      }
+    }
   }
 }
