@@ -12,59 +12,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let item of getCartDetails">
                 <td>
-                    <img src="https://www.zoro.com/static/cms/product/full/Z1vs6vpcpEx_.JPG" style="width: 120px;">
+                    <img src="{{item.img}}" style="width: 120px;">
                 </td>
-                <td>$ 400</td>
+                <td>$ {{item.price}}</td>
                 <td>
                     <div class="content">
-                        <button type="button" class="btn_add"> + </button>
-                            <span>1</span>
-                        <button type="button" class="btn_min"> - </button>
+                        <button type="button" class="btn_add" (click)="incQty(item.id, item.qnt)"> + </button>
+                            <span>{{item.qnt}}</span>
+                        <button type="button" class="btn_min" (click)="decQty(item.id, item.qnt)"> - </button>
                     </div>
                 </td>
                 <td>
-                    $ 400
-                </td>
-                <td>
-                    <fa-icon [icon]="faTrashAlt" style="color:red;"></fa-icon>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                    <img src="https://www.zoro.com/static/cms/product/full/Z1vs6vpcpEx_.JPG" style="width: 120px;">
-                </td>
-                <td>$ 400</td>
-                <td>
-                    <div class="content">
-                        <button type="button" class="btn_add"> + </button>
-                            <span>1</span>
-                        <button type="button" class="btn_min"> - </button>
-                    </div>
-                </td>
-                <td>
-                    $ 400
-                </td>
-                <td>
-                    <fa-icon [icon]="faTrashAlt" style="color:red;"></fa-icon>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                    <img src="https://www.zoro.com/static/cms/product/full/Z1vs6vpcpEx_.JPG" style="width: 120px;">
-                </td>
-                <td>$ 400</td>
-                <td>
-                    <div class="content">
-                        <button type="button" class="btn_add"> + </button>
-                            <span>1</span>
-                        <button type="button" class="btn_min"> - </button>
-                    </div>
-                </td>
-                <td>
-                    $ 400
+                    $ {{item.price}}
                 </td>
                 <td>
                     <fa-icon [icon]="faTrashAlt" style="color:red;"></fa-icon>
