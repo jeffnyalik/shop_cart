@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faTrashAlt, faArrowRightLong } from '@fortawesome/free-solid-svg-icons'
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -19,6 +19,7 @@ import { CartService } from '../../services/cart.service';
 export class CartComponent {
   faTrash = faTrash;
   faTrashAlt = faTrashAlt;
+  faArrowRightLong = faArrowRightLong;
   isLocastorageAvailable = typeof localStorage !== 'undefined';
   getCartDetails:any = [];
   totalNumber:number = 0;

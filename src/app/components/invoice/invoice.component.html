@@ -1,0 +1,73 @@
+<div class="container text-center">
+    <div class="prints">
+        <span>
+            <button class="btn btn-warning btn-sm rounded-0 mr-1">Export as PDF</button> <button class="btn btn-secondary btn-sm rounded-0">Print</button>
+        </span>
+        <span style="margin-right: 18%;">
+            <button class="btn btn-primary btn-sm rounded-0" routerLink="/payments">
+                CheckOut
+                <fa-icon [icon]="faMoneyCheckAlt"></fa-icon>
+            </button>
+        </span>
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="receipt-main col-xs-10 col-sm-10">
+                <div class="row">
+                    <div class="receipt-header">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="receipt-left"><img alt="iamgurdeeposahan" class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar6.png" style="width: 71px; border-radius: 43px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                        <div class="invoice_status">
+                            <span>NOT PAID</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="receipt-header receipt-header-mid">
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="receipt-left">
+                                <h3>INVOICE # 102</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of getCartDetails">
+                                <td class="col-md-9">Payment for {{item.name}}</td>
+                                <td class="col-md-3"><i class="fa fa-inr"></i> {{ item.price | currency:'Ksh' }} -</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">
+                                    <p><strong>Subtotal Amount:</strong></p>
+                                </td>
+                                <td>
+                                    <p><strong><i class="fa fa-inr"></i> {{ totalNumber | currency: 'Ksh' }} -</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">
+                                    <h2><strong>Total:</strong></h2>
+                                </td>
+                                <td class="text-left text-danger">
+                                    <h2><strong><i class="fa fa-inr"></i> {{totalNumber | currency: 'Ksh'}}/-</strong></h2>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

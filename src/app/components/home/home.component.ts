@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { parseHostBindings } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { parse } from 'path';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -81,24 +79,28 @@ export class HomeComponent {
   productArray = [
     {
       id: 1,
+      name: 'name1',
       img: 'https://images-na.ssl-images-amazon.com/images/I/31WbGp9tLkL.jpg',
       qnt: 1,
       price: 400
     },
     {
       id: 2,
+      name: 'name2',
       img: 'https://i.pinimg.com/564x/88/69/b9/8869b95556bb48225fdd65c1e03ef39e.jpg',
       qnt: 1,
       price: 800
     },
     {
       id: 3,
+      name: 'name3',
       img: 'https://www.zoro.com/static/cms/product/full/Z1vs6vpcpEx_.JPG',
       qnt: 1,
       price: 150
     },
     {
       id: 4,
+      name: 'name4',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8VZG3FGzw09m-Y6PrZqNtsYb-pgAMihVC-0BoOzd-HcaRF9G0eFIuLA2Eegt2Jp5Unys&usqp=CAU',
       qnt: 1,
       price: 80
